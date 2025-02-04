@@ -12,6 +12,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Visual Studio 2022
 - .NET 8
 - Postgresql
+- WPF
 
 ## 🚀 Instalando
 
