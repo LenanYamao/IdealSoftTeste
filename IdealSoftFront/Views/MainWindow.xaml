@@ -31,7 +31,7 @@
             <TextBox Width="150" Margin="5,0" Text="{Binding NewUsuario.Sobrenome, UpdateSourceTrigger=PropertyChanged}" />
             <Label Content="Telefone:" VerticalAlignment="Center" />
             <TextBox Width="150" Margin="5,0" Text="{Binding NewUsuario.Telefone, UpdateSourceTrigger=PropertyChanged}" />
-            <Button Content="Create" Width="75" Margin="10,0"
+            <Button Content="Criar" Width="75" Margin="10,0"
                     Command="{Binding CreateCommand}" />
         </StackPanel>
 
@@ -39,9 +39,9 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Button Content="Update" Width="75" Margin="0,0,10,0"
                     Command="{Binding UpdateCommand}" />
-            <Button Content="Delete" Width="75" Margin="0,0,10,0"
+            <Button Content="Excluir" Width="75" Margin="0,0,10,0"
                     Command="{Binding DeleteCommand}" />
-            <Button Content="Refresh" Width="75"
+            <Button Content="Atualizar" Width="75"
                     Command="{Binding RefreshCommand}" />
         </StackPanel>
     </Grid>
