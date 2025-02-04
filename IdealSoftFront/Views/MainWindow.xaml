@@ -1,0 +1,48 @@
+﻿<Window x:Class="IdealSoftFront.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IdealSoftFront"
+        xmlns:vm="clr-namespace:IdealSoftFront.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:UsuariosViewModel/>
+    </Window.DataContext>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- DataGrid to show items -->
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Usuarios}" 
+                  SelectedItem="{Binding SelectedUsuario, Mode=TwoWay}"
+                  AutoGenerateColumns="True" 
+                  Margin="0,0,0,10" />
+
+        <!-- Form for creating a new item -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Label Content="Nome:" VerticalAlignment="Center" />
+            <TextBox Width="150" Margin="5,0" Text="{Binding NewUsuario.Nome, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Content="Sobrenome:" VerticalAlignment="Center" />
+            <TextBox Width="150" Margin="5,0" Text="{Binding NewUsuario.Sobrenome, UpdateSourceTrigger=PropertyChanged}" />
+            <Label Content="Telefone:" VerticalAlignment="Center" />
+            <TextBox Width="150" Margin="5,0" Text="{Binding NewUsuario.Telefone, UpdateSourceTrigger=PropertyChanged}" />
+            <Button Content="Create" Width="75" Margin="10,0"
+                    Command="{Binding CreateCommand}" />
+        </StackPanel>
+
+        <!-- Buttons for update, delete, refresh -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="Update" Width="75" Margin="0,0,10,0"
+                    Command="{Binding UpdateCommand}" />
+            <Button Content="Delete" Width="75" Margin="0,0,10,0"
+                    Command="{Binding DeleteCommand}" />
+            <Button Content="Refresh" Width="75"
+                    Command="{Binding RefreshCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
