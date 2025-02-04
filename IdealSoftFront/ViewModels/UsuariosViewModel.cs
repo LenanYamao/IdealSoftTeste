@@ -20,7 +20,6 @@ namespace IdealSoftFront.ViewModels
         private Usuario? _selectedUsuario;
         private Usuario _newUsuario = new Usuario();
 
-        // An ObservableCollection to automatically update the UI when items change.
         public ObservableCollection<Usuario> Usuarios { get; } = new ObservableCollection<Usuario>();
 
         public Usuario? SelectedUsuario
@@ -58,7 +57,6 @@ namespace IdealSoftFront.ViewModels
 
             _httpClient.BaseAddress = new Uri("http://localhost:5110/");
 
-            // Initialize commands.
             CreateCommand = new RelayCommand(async _ => await CreateUsuarioAsync(), _ => NewUsuario != null && !string.IsNullOrWhiteSpace(NewUsuario.Nome));
             UpdateCommand = new RelayCommand(async _ => await UpdateUsuarioAsync(), _ => SelectedUsuario != null);
             DeleteCommand = new RelayCommand(async _ => await DeleteUsuarioAsync(), _ => SelectedUsuario != null);
@@ -122,7 +120,6 @@ namespace IdealSoftFront.ViewModels
             {
                 var response = await _httpClient.PutAsJsonAsync($"/Usuario/PutUsuario/{SelectedUsuario.Id}", SelectedUsuario);
                 response.EnsureSuccessStatusCode();
-                // Optionally, refresh the list or update properties accordingly.
                 await LoadUsuariosAsync();
             }
             catch (Exception ex)
